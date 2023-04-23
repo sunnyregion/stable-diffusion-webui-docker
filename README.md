@@ -129,3 +129,33 @@ DOCKERFILE=Dockerfile.py310  # Specify Dockerfile
 ```
 
 The next operation is as usual.
+
+### Q:docker compose 和docker-compose有什么区别
+docker-compose 是python开发的，算是V1版本。docker compose是go开发的，算是V2版本
+
+### Q：docker compose 如何安装
+https://github.com/docker/compose/releases
+下载相应的版本，如果没有合适的，就源码下载
+```shell
+$ go build
+```
+创建`$HOME/.docker/cli-plugins`目录，然后把编译好的docker-compose 拷贝到这个目录
+
+## Q:执行`docker compose`提示docker.sock 有问题
+执行`sudo chown $USER /var/run/docker.sock`来解决
+
+## Q:`$ docker compose --profile gpu up -d `编译不过去
+
+修改`docker-compose.yml`
+```bash
+$vim docker-compose.yml +18
+```
+在行尾添加`--skip-torch-cuda-test`
+
+## Q：gpu的docker起不来
+```bash
+$ sudo apt install -y nvidia-container-toolkit
+$ sudo  curl -s -L https://nvidia.github.io/nvidia-docker/$distribution/nvidia-docker.list | tee /etc/apt/sources.list.d/nvidia-docker.list
+```
+
+
