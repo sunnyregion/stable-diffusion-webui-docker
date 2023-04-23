@@ -144,7 +144,7 @@ $ go build
 ## Q:执行`docker compose`提示docker.sock 有问题
 执行`sudo chown $USER /var/run/docker.sock`来解决
 
-## Q:`$ docker compose --profile gpu up -d `编译不过去
+## Q:`docker compose --profile gpu up -d `编译不过去
 
 修改`docker-compose.yml`
 ```bash
